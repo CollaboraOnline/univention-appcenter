@@ -62,13 +62,7 @@ admin console, `extra_params` for arbitrary `--o:` config overrides,
 
 The App Center writes every inside-scope app setting into the env file it
 passes to `docker create`, both under its own name and uppercased - so the
-`username` and `password` settings reach coolwsd directly. All settings
-carry `Scope = inside, outside`: the inside scope puts them into the
-container environment, while the outside scope keeps the authoritative
-copy in the host's Univention Configuration Registry - the container copy
-in /etc/univention/base.conf starts empty on every container recreation,
-so values that only live inside would show up empty in the settings form
-and get lost on the next reinitialize. The app `env`
+`username` and `password` settings reach coolwsd directly. The app `env`
 file maps the remaining settings: `domain` to `aliasgroup1`, and the
 support key (Collabora Online app only) to
 `extra_params=--o:support_key=...`. The support key is uploaded as a key

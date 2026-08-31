@@ -5,7 +5,6 @@ Type = String
 InitialValue = admin
 Required = True
 Show = Install, Settings
-Scope = inside, outside
 
 [password]
 Description[de]=Passwort für den Zugriff auf CODE Admin Console (Beim Ändern dieser Einstellung wird die App neu gestartet)
@@ -14,4 +13,3 @@ Type = Password
 InitialValue = univention
 Required = True
 Show = Install, Settings
-Scope = inside, outside
