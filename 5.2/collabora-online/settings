@@ -8,8 +8,8 @@ Show = Install
 ShowReadOnly = Settings
 
 [username]
-Description[de] = Benutzername für den Zugriff auf Collabora Online Admin Console (Ein Neustart der App ist erforderlich)
-Description[en] = User name for accessing Collabora Online Admin Console (Requires a restart of the app)
+Description[de] = Benutzername für den Zugriff auf Collabora Online Admin Console (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Description[en] = User name for accessing Collabora Online Admin Console (Changing this setting restarts the app)
 Type = String
 InitialValue = admin
 Required = True
@@ -18,8 +18,8 @@ Group = Admin Console
 Group[de] = Admin Console
 
 [password]
-Description[de]=Passwort für den Zugriff auf Collabora Online Admin Console (Ein Neustart der App ist erforderlich)
-Description[en]=Password for accessing Collabora Online Admin Console (Requires a restart of the app)
+Description[de]=Passwort für den Zugriff auf Collabora Online Admin Console (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Description[en]=Password for accessing Collabora Online Admin Console (Changing this setting restarts the app)
 Type = Password
 InitialValue = univention
 Required = True
@@ -30,8 +30,8 @@ Group[de] = Admin Console
 [collabora/online/keyfile]
 Type = File
 Filename = /etc/collabora.key
-Description = Collabora Online Support Key (Ein Neustart der App ist erforderlich)
-Description[de] = Collabora Online Support Key (Requires a restart of the app)
+Description = Collabora Online Support Key (The app is restarted automatically)
+Description[de] = Collabora Online Support Key (Die App wird automatisch neu gestartet)
 Show = Install, Settings
 Scope = inside, outside
 Group = Support Key

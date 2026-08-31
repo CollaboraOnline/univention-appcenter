@@ -1,7 +1,7 @@
 [Application]
 ID = collabora-online
 Code = 13
-Version = 25.04.9.4
+Version = 26.04.3.3
 Name = Collabora Online
 Vendor = Collabora Productivity Ltd
 Description = Powerful LibreOffice-based online office suite
@@ -58,7 +58,7 @@ DockerShellCommand = /bin/bash
 DockerScriptSetup = 
 Logo = logo.svg
 DockerScriptStoreData = 
-DockerImage = docker.software-univention.de/collabora-online:25.04.9.4
+DockerImage = docker.software-univention.de/collabora-online:26.04.3.3
 LogoDetailPage = logo_detail_page.svg
 PortsExclusive = 9980
 DockerServerRole = memberserver
@@ -96,7 +96,7 @@ ApplianceLogo = appliance_logo.svg
 ApplianceCssBackground = #b4b4e8
 ApplianceAllowPreconfiguredSetup = False
 AppliancePortalCssBackground = #b4b4e8
-DockerScriptConfigure = /tmp/collabora-online-configure
+DockerScriptConfigure =
 Contact = sales@collaboraoffice.com
 NotifyVendor = False
 ConflictedApps = collabora

@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# Runs on the docker host after app settings are saved.
+#
+# The Collabora Online docker image is distroless: it contains no shell, so
+# settings cannot be applied by a script running inside the container.
+# Instead, all settings reach coolwsd as container environment variables
+# (coolwsd is started with --use-env-vars), and docker fixes the environment
+# at container creation time. Recreate the container so that changed
+# settings take effect; "univention-app reinitialize" keeps the current
+# settings values.
+#
+# $1 is the action: install, upgrade, settings or remove. Install and
+# upgrade already (re)create the container with the current settings.
+
+if [ "$1" = "settings" ]; then
+    univention-app reinitialize collabora
+fi
+
+exit 0

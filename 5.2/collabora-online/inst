@@ -86,8 +86,10 @@ EOF
 a2enmod proxy_wstunnel
 invoke-rc.d apache2 reload
 
-# restart container, otherwise code does not work, don't know why?
-docker restart "$(ucr get appcenter/apps/collabora-online/container)"
+# recreate the container so that settings provided at install time (e.g.
+# the support key) reach coolwsd as environment variables; this also covers
+# the container restart that has always been needed at this point
+univention-app reinitialize collabora-online
 
 FQDN="$(ucr get hostname).$(ucr get domainname)"
 if [ "$(ucr get appcenter/apps/owncloud/status)" = "installed" ]; then

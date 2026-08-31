@@ -1,9 +1,0 @@
-#!/bin/bash
-
-password=$(sed -n 's/^password: \(.*\)/\1/p' /etc/univention/base.conf)
-username=$(sed -n 's/^username: \(.*\)/\1/p' /etc/univention/base.conf)
-
-test -n "$username" && sed -i -re 's/>[^<]+<\/username>/>'"$username"'<\/username>/' /etc/coolwsd/coolwsd.xml
-test -n "$password" && sed -i -re 's/>[^<]+<\/password>/>'"$password"'<\/password>/' /etc/coolwsd/coolwsd.xml
-
-exit 0

@@ -1,0 +1,15 @@
+# Environment file for docker container creation. The @%@...@%@ references
+# are resolved from the app settings (and host UCR) when the container is
+# created; coolwsd (started with --use-env-vars) reads the resulting
+# variables at startup.
+
+# The 'domain' setting is a regex of WOPI hosts that may use this server.
+# coolwsd consumes it as an alias group; the first comma-separated field of
+# aliasgroup1 is a regex matched against the connecting WOPI host.
+aliasgroup1=@%@domain@%@
+
+# The support key is set through a config override; there is no dedicated
+# environment variable for it. configure_host syncs the content of the
+# uploaded key file (/etc/collabora.key) into the UCR variable referenced
+# here. An empty value is the same as no key.
+extra_params=--o:support_key=@%@collabora/online/supportkey@%@

@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# Runs on the docker host after app settings are saved.
+#
+# The Collabora Online docker image is distroless: it contains no shell, so
+# settings cannot be applied by a script running inside the container.
+# Instead, all settings reach coolwsd as container environment variables
+# (coolwsd is started with --use-env-vars), and docker fixes the environment
+# at container creation time. Recreate the container so that changed
+# settings take effect; "univention-app reinitialize" keeps the current
+# settings values.
+#
+# $1 is the action: install, upgrade, settings or remove. Install and
+# upgrade already (re)create the container with the current settings.
+
+# The support key arrives as an uploaded key file, which the App Center
+# writes to /etc/collabora.key on the host. coolwsd needs its content in
+# the support_key config option, which the env file feeds from this UCR
+# variable at container creation.
+key=""
+if [ -r /etc/collabora.key ]; then
+    key="$(cat /etc/collabora.key)"
+fi
+if [ -n "$key" ]; then
+    ucr set collabora/online/supportkey="$key"
+else
+    ucr unset collabora/online/supportkey
+fi
+
+if [ "$1" = "settings" ]; then
+    univention-app reinitialize collabora-online
+fi
+
+exit 0
