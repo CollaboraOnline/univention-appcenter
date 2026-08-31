@@ -73,7 +73,7 @@ DockerEnvDatabasePassword = DB_PASSWORD
 DockerScriptUpdateAvailable = 
 DockerScriptRestoreDataBeforeSetup = 
 DockerScriptUpdatePackages = 
-Thumbnails = https://www.youtube.com/watch?v=KqMFWs6zoV0, thumbnail_4.png, thumbnail_5.png, thumbnail_6.png, thumbnail_7.png, thumbnail_8.png, thumbnail_9.png, thumbnail_10.png, thumbnail_11.png
+Thumbnails = https://www.youtube.com/watch?v=E_lxGsQV84M, thumbnail_4.png, thumbnail_5.png, thumbnail_6.png, thumbnail_7.png, thumbnail_8.png, thumbnail_9.png, thumbnail_10.png, thumbnail_11.png
 DockerEnvDatabaseUser = DB_USER
 WebInterfaceProxyScheme = both
 DockerEnvDatabaseName = DB_NAME

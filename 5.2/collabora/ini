@@ -75,7 +75,7 @@ DockerScriptUpdateAvailable =
 DockerScriptRestoreDataBeforeSetup =
 DockerScriptUpdatePackages =
 Categories = Collaboration, Education
-Thumbnails = https://www.youtube.com/watch?v=KqMFWs6zoV0
+Thumbnails = https://www.youtube.com/watch?v=E_lxGsQV84M
 DockerEnvDatabaseUser = DB_USER
 WebInterfaceProxyScheme = both
 DockerEnvDatabaseName = DB_NAME
