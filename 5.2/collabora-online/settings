@@ -6,6 +6,7 @@ InitialValue = .*
 Required = True
 Show = Install
 ShowReadOnly = Settings
+Scope = inside, outside
 
 [username]
 Description[de] = Benutzername für den Zugriff auf Collabora Online Admin Console (Beim Ändern dieser Einstellung wird die App neu gestartet)
@@ -16,6 +17,7 @@ Required = True
 Show = Install, Settings
 Group = Admin Console
 Group[de] = Admin Console
+Scope = inside, outside
 
 [password]
 Description[de]=Passwort für den Zugriff auf Collabora Online Admin Console (Beim Ändern dieser Einstellung wird die App neu gestartet)
@@ -26,6 +28,7 @@ Required = True
 Show = Install, Settings
 Group = Admin Console
 Group[de] = Admin Console
+Scope = inside, outside
 
 [collabora/online/keyfile]
 Type = File
