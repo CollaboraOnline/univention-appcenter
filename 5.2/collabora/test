@@ -1,0 +1,324 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+#
+# Copyright 2019 Univention GmbH
+#
+# https://www.univention.de/
+#
+# All rights reserved.
+#
+# The source code of this program is made available
+# under the terms of the GNU Affero General Public License version 3
+# (GNU AGPL V3) as published by the Free Software Foundation.
+#
+# Binary versions of this program provided by Univention to you as
+# well as other copyrighted, protected or trademarked materials like
+# Logos, graphics, fonts, specific documentations and configurations,
+# cryptographic keys etc. are subject to a license agreement between
+# you and Univention and not subject to the GNU AGPL V3.
+#
+# In the case you use this program under the terms of the GNU AGPL V3,
+# the program is provided in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public
+# License with the Debian GNU/Linux or Univention distribution in file
+# /usr/share/common-licenses/AGPL-3; if not, see
+# <https://www.gnu.org/licenses/>.
+#
+
+import os
+import os.path
+import importlib
+import time
+import sys
+import random
+import string
+import pathlib
+import zipfile
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+os.environ["UCSTEST_SELENIUM_USER_AGENT"] = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+test_lib = os.environ.get('UCS_TEST_LIB', 'univention.testing.apptest')
+
+try:
+    test_lib = importlib.import_module(test_lib)
+except ImportError:
+    print('Could not import {}. Maybe set $UCS_TEST_LIB'.format(test_lib))
+    sys.exit(1)
+
+
+def test_owncloud_and_nextcloud_installed(umc, appcenter):
+    os.system('ucr unset ldap/server/sasl/oauthbearer/trusted-authorized-party/$(ucr get hostname).$(ucr get domainname)')
+    os.system('ucr unset ldap/server/sasl/oauthbearer/trusted-authorized-party/$(ucr get ldap/master)')
+
+    appcenter.install_newest('nextcloud')
+    appcenter.install_newest('owncloud')
+
+
+def _use_document(chrome, document_title, ext, action=None):
+    found = False
+    elements = chrome.find_all('table#filestable a.name')
+    if not elements:
+        elements = chrome.find_all('table.files-filestable a.name')
+    for element in elements:
+        if found:
+            break
+        for elem in chrome.find_all_below(element, 'span.innernametext'):
+            if found:
+                break
+            if elem.text == document_title:
+                for elem in chrome.find_all_below(element, 'span.extension'):
+                    if found:
+                        break
+                    if elem.text == ext:
+                        if action:
+                            chrome.click_element_below(element, 'span.fileactions a[data-action=menu]')
+                            chrome.click_element('div.fileActionsMenu.open a[data-action={}]'.format(action))
+                        else:
+                            elem.click()
+                        found = True
+    if not found:
+        raise RuntimeError('Did not find {}{}'.format(document_title, ext))
+    time.sleep(4)
+
+
+def _use_document_nextcloud(chrome, document_title, ext, action=None):
+    row = chrome.driver.find_element(By.XPATH, '//tr[@data-cy-files-list-row-name="{}{}"]'.format(document_title, ext))
+    if row:
+        if action:
+            chrome.click_element_below(row, 'div.action-item')
+            time.sleep(1)
+            chrome.save_screenshot(action)
+            element = chrome.driver.find_element(By.XPATH, '//li[@data-cy-files-list-row-action="{}"]/button'.format(action.lower()))
+            if element:
+                element.click()
+            else:
+                raise RuntimeError('Did not find action {}'.format(action))
+        else:
+            chrome.click_element_below(row, 'a.files-list__row-name-link')
+    else:
+        raise RuntimeError('Did not find {}{}'.format(document_title, ext))
+    time.sleep(4)
+
+
+def _save_as_txt2(chrome, document_title):
+    time.sleep(5)
+    with chrome.switched_frame('iframe'):
+        with chrome.switched_frame('iframe'):
+            chrome.click_element('li#menu-file')
+            time.sleep(1)
+            chrome.click_element('li#menu-saveas')
+            time.sleep(1)
+            chrome.send_keys('{}.txt'.format(document_title))
+            chrome.enter_return()
+            time.sleep(2)
+            chrome.click_element('div#closebutton')
+    time.sleep(2)
+
+
+def _add_doc_owncloud(chrome, document_title):
+    chrome.click_element('.icon.icon-add')
+    chrome.click_element('[data-filetype="x-office-document"]')
+    chrome.enter_input_element('[data-filetype="x-office-document"] input[type=text]', document_title)
+    chrome.enter_return()
+
+
+def _add_doc_nextcloud(chrome, document_title):
+    chrome.click_element('.plus-icon')
+    time.sleep(2)
+    chrome.click_element('.icon-filetype-document')
+    time.sleep(1)
+    chrome.enter_input_element('.dialog .input-field input[type=text]', document_title)
+    chrome.enter_return()
+    time.sleep(2)
+    chrome.click_element('[value="Create"]')
+
+
+def _prepare_file_view(chrome):
+    i = 0
+    if chrome.find_first('label#view-toggle'):
+        while not chrome.find_first('label#view-toggle.icon-toggle-pictures'):
+            i += 1
+            if i > 20:
+                break
+            chrome.click_element('label#view-toggle')
+    while chrome.find_first('th#headerDate span.icon-triangle-n'):
+        i += 1
+        if i > 20:
+            break
+        chrome.click_element('th#headerDate span.icon-triangle-n')
+
+
+def _enter_text_in_collabora_owncloud(chrome, document_content):
+    from selenium.webdriver import ActionChains
+
+    time.sleep(10)
+    # in UCS tabs are different, change to the last open tab
+    chrome.change_tab(-1)
+    chrome.driver.switch_to.frame(chrome.driver.find_element_by_xpath('//iframe[@id="loleafletframe"]'))
+    try:
+        element = chrome.driver.find_elements_by_css_selector('.vex-close')[0]
+        ActionChains(chrome.driver).move_to_element_with_offset(element, -15, 15).click().perform()
+    except IndexError:
+        pass
+    time.sleep(2)
+    # send escape to close initial popup
+    ActionChains(chrome.driver).send_keys(Keys.ESCAPE).perform()
+    time.sleep(2)
+    # click on document to edit file
+    chrome.driver.find_element_by_xpath('//*[@id="main-document-content"]').click()
+    time.sleep(2)
+    chrome.send_keys(document_content)
+    time.sleep(2)
+    # save
+    ActionChains(chrome.driver).key_down(Keys.CONTROL).send_keys('s').key_up(Keys.CONTROL).perform()
+    time.sleep(2)
+    chrome.driver.switch_to.default_content()
+    chrome.close_tab()
+    chrome.change_tab(-1)
+
+
+def _enter_text_in_collabora_nextcloud(chrome, document_content):
+    from selenium.webdriver.support import expected_conditions as EC
+    from selenium.webdriver.support.ui import WebDriverWait as wait
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver import ActionChains
+    time.sleep(10)
+    # send escape to close initial popup
+    ActionChains(chrome.driver).send_keys(Keys.ESCAPE).perform()
+    time.sleep(2)
+    # wait(chrome.driver, 10).until(EC.frame_to_be_available_and_switch_to_it('richdocumentsframe'))
+    # wait(chrome.driver, 10).until(EC.frame_to_be_available_and_switch_to_it('loleafletframe'))
+    # get all iframes
+    iframes = chrome.driver.find_elements_by_tag_name('iframe')
+    for iframe in iframes:
+        if 'collaboraframe' in iframe.get_attribute('id'):
+            chrome.driver.switch_to.frame(iframe)
+            break
+
+    # time.sleep(1)
+    # check if an error popup exists with "document cannot be saved, check permissions or contact your administrator"
+    try:
+        element = chrome.driver.find_elements_by_css_selector('.vex-close')[0]
+        ActionChains(chrome.driver).move_to_element_with_offset(element, -15, 15).click().perform()
+    except IndexError:
+        pass
+    chrome.enter_return()
+    time.sleep(2)
+    # click on document to edit file
+    chrome.click_element("div[id='main-document-content']")
+    # chrome.driver.find_element_by_xpath('//*[@id="main-document-content"]').click()
+    time.sleep(1)
+    chrome.send_keys(document_content)
+    time.sleep(1)
+    # save
+    ActionChains(chrome.driver).key_down(Keys.CONTROL).send_keys('s').key_up(Keys.CONTROL).perform()
+    time.sleep(1)
+    wait(chrome.driver, 10).until(EC.element_to_be_clickable((By.ID, 'closebutton')))
+    chrome.click_element('#closebutton')
+    time.sleep(2)
+    chrome.driver.switch_to.default_content()
+    time.sleep(2)
+
+
+def _login_nextcloud(chrome, user):
+    for i in range(3):
+        try:
+            chrome.enter_input('user', user.properties['username'])
+            chrome.enter_input('password', 'univention')
+            chrome.enter_return()
+            if chrome.find_first('[name=user}]'):
+                raise RuntimeError('Login failed')
+            break
+        except Exception as e:
+            time.sleep(1)
+    
+    time.sleep(2)
+
+
+def _login(chrome, user):
+    chrome.enter_input('user', user.properties['username'])
+    chrome.enter_input('password', 'univention')
+    chrome.click_element('#submit')
+    time.sleep(2)
+
+
+def test_nextcloud(chrome, users):
+    with chrome.capture('collabora_nextcloud'):
+
+        from selenium.webdriver.support import expected_conditions as EC
+        from selenium.webdriver.support.ui import WebDriverWait as wait
+        from selenium.webdriver.common.by import By
+        from selenium.common.exceptions import TimeoutException
+
+        user = users('collabora-2', {'nextcloudEnabled': True})
+        document_title = ''.join(random.choice(string.ascii_uppercase) for _ in range(10))
+        document_content = 'This is some test content...'
+        chrome.goto_portal()
+        time.sleep(10)
+        chrome.reload()
+        time.sleep(10)
+        try:
+            chrome.click_portal_tile(u'Nextcloud')
+        except Exception:
+            chrome.click_portal_tile(u'Nextcloud Hub')
+        time.sleep(2)
+        if chrome.find_first('.login-option:first-of-type'):
+            chrome.click_element('.login-option:first-of-type')
+        _login_nextcloud(chrome, user)
+        # first run wizard
+        try:
+            wait(chrome.driver, 30).until(EC.element_to_be_clickable((By.ID, 'firstrunwizard')))
+            chrome.driver.execute_script("document.getElementById('firstrunwizard').getElementsByTagName('button')[1].click()")
+            time.sleep(5)
+        except TimeoutException:
+            pass
+        # go to files
+        element = chrome.driver.find_element_by_xpath("//li[@data-app-id='files']")
+        element.click()
+        time.sleep(15)
+        _add_doc_nextcloud(chrome, document_title + '.odt')
+        time.sleep(9)
+        _prepare_file_view(chrome)
+        _enter_text_in_collabora_nextcloud(chrome, document_content)
+        _prepare_file_view(chrome)
+        _use_document_nextcloud(chrome, document_title, '.odt', 'Download')
+        path = pathlib.Path('~').expanduser() / 'Downloads' / '{}.odt'.format(document_title)
+        with zipfile.ZipFile(str(path), 'r') as myzip:
+            with myzip.open('content.xml') as myfile:
+                assert document_content in str(myfile.read())
+
+
+def test_owncloud(chrome, users):
+    with chrome.capture('collabora_owncloud'):
+        user = users('collabora-2', {'owncloudEnabled': True})
+        document_title = ''.join(random.choice(string.ascii_uppercase) for _ in range(10))
+        document_content = 'This is some test content...'
+        chrome.goto_portal()
+        chrome.click_portal_tile(u'ownCloud')
+        time.sleep(2)
+        _login(chrome, user)
+        if chrome.find_first('#closeWizard'):
+            # very first login of this user will show a tutorial
+            chrome.click_element('#closeWizard')
+            time.sleep(1)
+        _add_doc_owncloud(chrome, document_title + '.odt')
+        time.sleep(1)
+        _prepare_file_view(chrome)
+        _use_document(chrome, document_title, '.odt')
+        _enter_text_in_collabora_owncloud(chrome, document_content)
+        _prepare_file_view(chrome)
+        _use_document(chrome, document_title, '.odt', 'Download')
+        path = pathlib.Path('~').expanduser() / 'Downloads' / '{}.odt'.format(document_title)
+        with zipfile.ZipFile(str(path), 'r') as myzip:
+            with myzip.open('content.xml') as myfile:
+                assert document_content in str(myfile.read())
+
+
+if __name__ == '__main__':
+    test_lib.run_test_file(__file__)

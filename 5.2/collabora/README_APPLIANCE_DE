@@ -1,0 +1,20 @@
+<p>
+	Diese App-Appliance enthält Collabora Online Development Edition und Nextcloud.
+</p>
+<ul>
+	<li>
+		Bitte stellen Sie sicher, dass Sie über https://&lt;hostname&gt;.&lt;ucs-domain&gt; auf UCS und Nextcloud zugreifen und nicht über die IP-Adresse.
+	</li>
+	<li>
+		Bitte akzeptieren Sie eine Ausnahme für das UCS SSL-Zertifikat.
+	</li>
+	<li>
+		Die Kommunikation zwischen Nextcloud und Collabora erfolgt über hostnames. Wenn die obige &lt;hostname&gt;.&lt;ucs-domain&gt; Kombination für Ihren Client nicht funktioniert, können Sie entweder das UCS-System zur Liste der DNS-Nameserver Ihres Clients hinzufügen oder die IP-Adresse und den Hostnamen zu Ihrer lokalen Hosts-Datei hinzufügen.
+	</li>
+</ul>
+<p>
+	Für die Anmeldung als Admin-Nutzer verwenden Sie bitte den Benutzernamen &quot;Administrator&quot; und das während des Setups vergebene Passwort.
+</p>
+<p>
+	Um Nextcloud nutzen zu können, müssen die Benutzer zuerst aktiviert werden. Melden Sie sich am UCS-Managementsystem an, wählen oder erstellen Sie einen entsprechenden Benutzer und aktivieren Sie das Kontrollkästchen für Nextcloud.
+</p>

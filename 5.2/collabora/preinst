@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ucr set appcenter/apps/collabora/docker/params='--restart always --cap-add MKNOD -t'
+
+exit 0

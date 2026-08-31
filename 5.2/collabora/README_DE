@@ -1,0 +1,124 @@
+<h1>
+	1. Konfiguration von Collabora Online abschließen
+</h1>
+<ul>
+	<li>
+		Zuerst benötigen Sie eine laufende Datei Sync und Share Lösung wie ownCloud oder Nextcloud (beide sind im UCS App Center verfügbar).
+	</li>
+	<li>
+		Als nächstes müssen Sie das Collabora Plugin in Ihrer File Sync and Share Lösung installieren (siehe unten für weitere Informationen)
+	</li>
+	<li>
+		Jetzt können Sie <b>https://FQDN_DIESES_SERVERs</b> ohne Portnummer als WOPI URL in Ihrer bevorzugten File Sync and Share Lösung eintragen.
+	</li>
+	<li>
+		Bitte stellen Sie sicher, dass die File Sync-Lösung Zugriff auf die Root-CA der UCS-Domain hat. Die Apps kümmern sich in der Regel bereits selbst darum.
+		<br>
+	</li>
+	<li>
+		Verwenden Sie den FQDN des File Sync Servers beim Zugriff auf die File Sync-Lösung.
+	</li>
+	<li>
+		Vergewissern Sie sich, dass Ihr Browser den FQDN des Dateisynchronisierungs- und Collabora-Servers auflösen kann.
+	</li>
+	<li>
+		Stellen Sie sicher, dass der Browser das Zertifikat des Collabora Servers validieren kann. UCS erstellt eine eigene Certificate Authority. Die <a href="https://help.univention.com/search?q=accept%20self%20signed%20certificate%20category%3A49">Univention Knowledge hilft hier weiter</a>.
+	</li>
+	<li>
+		Die Administratorkonsole finden Sie hier:&nbsp;<a href="/browser/dist/admin/admin.html">/browser/dist/admin/admin.html</a>&nbsp;(nur HTTPS).
+	</li>
+</ul>
+<h1>
+	2. Support and Limitations
+</h1>
+<p>
+	Collabora Online Development Edition (oder CODE) ist eine Entwicklungsedition von Collabora Online. CODE ist ideal für Privatanwender, die ihre eigene Office Suite online betreiben möchten. Es unterstützt bis zu 10 offene Dokumente und 20 gleichzeitige Benutzer. Es steht nur Community-Support zur Verfügung. Wenn Sie auf der Suche nach einer skalierbaren, kommerziell unterstützten Version mit Langzeit-Support, signierten Sicherheitsupdates und einem SLA sind, sollten Sie sich unsere Seite <a href="https://www.univention.com/products/univention-app-center/app-catalog/collabora-online/">Collabora Online</a> ansehen.
+</p>
+<h1>
+	3. Integrationen
+</h1>
+<h2>
+	3.1. EGroupware
+</h2>
+<ul>
+	<li>
+		Gehen Sie in das App Center, wählen Sie EGroupware und installieren Sie die App.
+	</li>
+	<li>
+		Login in EGroupware mit einem Admin-Account von EGroupware.
+	</li>
+	<li>
+		Gehen Sie zu Admin → Anwendungen → Collabora → Konfiguration der Anwendung.
+	</li>
+	<li>
+		Geben Sie die URL für den Collabora-Server ein, z.B. <b>https://FQDN_DIESES_SERVERs</b>
+	</li>
+	<li>
+		Es finden zusätzliche Prüfungen für den Benutzer &quot;anonymous&quot; statt, der für Collabora und File Sharing erforderlich ist.
+	</li>
+	<li>
+		Der nächste Schritt ist das Festlegen von Berechtigungen für Gruppen, die Collabora Online nutzen können sollen: Bearbeiten Sie entweder die Benutzergruppe oder verwenden Sie das Kontextmenü auf der Benutzergruppe → Zugriffsrechte und setzen Sie ein Häkchen für Collabora. So kann der Admin entscheiden, wer Collabora in EGroupware nutzen darf.
+	</li>
+</ul>
+<h2>
+	3.2. Nextcloud
+</h2>
+<ul>
+	<li>
+		Gehen Sie in das App Center, wählen Sie Nextcloud aus und installieren Sie die App.
+	</li>
+	<li>
+		Installieren Sie die Collabora Online App in Nextcloud.
+	</li>
+	<ol>
+		<li>
+			Melden Sie sich an Nextcloud als <i>Administrator</i>.
+		</li>
+		<li>
+			Gehen Sie auf <i>Apps</i> → <i>Office &amp; Text</i> → <i>[Enable] Collabora Online</i>
+		</li>
+		<li>
+			Gehen Sie auf <i>Admin</i> → <i>Collabora Online for Collabora specific settings</i>
+		</li>
+	</ol>
+</ul>
+<h2>
+	3.3. ownCloud
+</h2>
+<p>
+	Das Collabora Online Plugin ist bereits in ownCloud installiert, aber standardmäßig deaktiviert. Wenn Sie Collabora auf das gleiche System wie ownCloud installieren, wird das Plugin in ownCloud automatisch aktiviert.
+</p>
+<p>
+	Sie können das prüfen oder das Plugin manuell mit den folgenden Schritten aktivieren:
+</p>
+<ul>
+	<li>
+		Wenn ownCloud noch nicht installiert ist, gehen Sie in das App Center, wählen Sie ownCloud aus und installieren Sie die App.
+	</li>
+	<li>
+		Melden Sie sich bei ownCloud als Adminbenutzer (Benutzername <i>owncloud</i>) an.
+	</li>
+	<li>
+		Gehen Sie anschließend zu <i>Settings</i> → <i>Admin Apps</i> → <i>Show disabled Apps</i> → <i>[Enable] Collabora Online</i>
+	</li>
+	<li>
+		Gehen Sie zu <i>Settings</i> → <i>Admin</i> → <i>Additional</i> → <i>Collabora Online</i>: Prüfen Sie die Einstellungen für den Collabora Online Server. Standardmäßig ist der UCS Rechnername eingetragen, auf dem auch ownCloud installiert ist.
+	</li>
+</ul>
+<h1>
+	Community Support
+</h1>
+<p>
+	Abhängig von der eingesetzten File, Sync &amp; Share Lösung steht Community Support in den jeweiligen Foren zur Verfügung:
+</p>
+<ul>
+	<li>
+		<a href="https://help.egroupware.org/">EGroupware</a>
+	</li>
+	<li>
+		<a href="https://help.nextcloud.com/tag/collabora-online">Nextcloud</a>
+	</li>
+	<li>
+		<a href="https://central.owncloud.org/c/server">ownCloud</a>
+	</li>
+</ul>

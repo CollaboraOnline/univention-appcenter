@@ -1,0 +1,38 @@
+[domain]
+Description[de] = Diese Rechner dürfen auf den Collabora Online Server zugreifen (host\\.my\\.domain)
+Description[en] = These hosts have access to the Collabora Online server (host\\.my\\.domain)
+Type = String
+InitialValue = .*
+Required = True
+Show = Install
+ShowReadOnly = Settings
+
+[username]
+Description[de] = Benutzername für den Zugriff auf Collabora Online Admin Console (Ein Neustart der App ist erforderlich)
+Description[en] = User name for accessing Collabora Online Admin Console (Requires a restart of the app)
+Type = String
+InitialValue = admin
+Required = True
+Show = Install, Settings
+Group = Admin Console
+Group[de] = Admin Console
+
+[password]
+Description[de]=Passwort für den Zugriff auf Collabora Online Admin Console (Ein Neustart der App ist erforderlich)
+Description[en]=Password for accessing Collabora Online Admin Console (Requires a restart of the app)
+Type = Password
+InitialValue = univention
+Required = True
+Show = Install, Settings
+Group = Admin Console
+Group[de] = Admin Console
+
+[collabora/online/keyfile]
+Type = File
+Filename = /etc/collabora.key
+Description = Collabora Online Support Key (Ein Neustart der App ist erforderlich)
+Description[de] = Collabora Online Support Key (Requires a restart of the app)
+Show = Install, Settings
+Scope = inside, outside
+Group = Support Key
+Group[de] = Support Key

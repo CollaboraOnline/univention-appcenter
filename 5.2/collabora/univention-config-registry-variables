@@ -1,0 +1,23 @@
+[domain]
+Description[de]=Diese Rechner dürfen auf den Collabora Server zugreifen (host\\.my\\.domain)
+Description[en]=These hosts have access to the Collabora server (host\\.my\\.domain)
+Type=str
+Advanced=no
+Categories=apps
+default=.*
+
+[username]
+Description[de]=Benutzername für den Zugriff auf CODE Admin Console
+Description[en]=User name for accessing CODE Admin Console
+Type=str
+Advanced=no
+Categories=apps
+default=admin
+
+[password]
+Description[de]=Passswort für den Zugriff auf CODE Admin Console
+Description[en]=Password for accessing CODE Admin Console
+Type=str
+Advanced=no
+Categories=apps
+default=univention

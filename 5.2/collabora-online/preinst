@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ucr set appcenter/apps/collabora-online/docker/params='--restart always -t'
+
+exit 0

@@ -1,0 +1,149 @@
+<h1>
+	1. Completing the Configuration of Collabora Online
+</h1>
+<ul>
+	<li>
+		First, you need a running File Sync and Share solution like EGroupware, Nextcloud or ownCloud (all are available in Univention App Center).
+	</li>
+	<li>
+		Next, you need to install the Collabora Plugin in your File Sync and Share solution (see below for more information).
+	</li>
+	<li>
+		Then you can give  <b>https://FQDN_OF_THIS_SERVER</b> without a port number as the WOPI URL in your preferred File Sync and Share solution.
+	</li>
+	<li>
+		Please make sure the File Sync solution has access to the Root CA of the UCS domain (see below for more detailed information).
+	</li>
+	<li>
+		Use the FQDN of the File Sync server when accessing the File Sync solution.
+	</li>
+	<li>
+		Make sure your browser can resolve the FQDN of the File Sync and Collabora Online server.
+	</li>
+	<li>
+		Accept the certificate of the Collabora server in your browser if the browser requests accordingly. UCS creates his own certificate authority.
+	</li>
+	<li>
+		The administrator console can be found here:&nbsp;<a href="/browser/dist/admin/admin.html">/browser/dist/admin/admin.html</a>&nbsp;(HTTPS only).
+	</li>
+</ul>
+<h1>
+	2. Support Key
+</h1>
+<p>
+	Collabora Online requires a support key for production use. After you have purchased one, you receive a support key. To upload and activate it, follow these steps:
+</p>
+<ul>
+	<li>
+		Go to the App Settings below.
+	</li>
+	<li>
+		Upload the key file via the respective upload dialog.
+	</li>
+	<li>
+		Stop the application at the top of the app settings.
+	</li>
+	<li>
+		Start the application again at the top of the app settings.
+	</li>
+</ul>
+<h1>
+	3. Integrations
+</h1>
+<h2>
+	3.1. EGroupware
+</h2>
+<ul>
+	<li>
+		Goto the App Center, select EGroupware and install it.
+	</li>
+	<li>
+		Login in EGroupware with an Admin-Account of EGroupware
+	</li>
+	<li>
+		Go to <i>Admin</i> → <i>Applications</i> → <i>Collabora</i> → <i>Site configuration</i>
+	</li>
+	<li>
+		Insert the URL for the Collabora server e.g. <b>https://FQDN_OF_THIS_SERVER</b>
+	</li>
+	<li>
+		There are happening additional checks for the user &quot;anonymous&quot;, which is required for Collabora and file sharing&nbsp;
+	</li>
+	<li>
+		Next step is to set permissions for groups, which should be able to use Collabora Online<b>.&nbsp;</b> Either edit the User group or use context menu on the user group → Access control and add checkmark for Collabora . So Admin can decide who is able to use Collabora in EGroupware.
+	</li>
+</ul>
+<h2>
+	3.2. Nextcloud
+</h2>
+<ul>
+	<li>
+		Goto the App Center, select Nextcloud and install it.
+	</li>
+	<li>
+		Add the UCS root CA to the Nextcloud App. Run the following command as root user on your Nextcloud UCS server:
+		<pre>
+cat /etc/univention/ssl/ucsCA/CAcert.pem | \
+docker exec -i "$(ucr get appcenter/apps/nextcloud/container)" \
+bash -c 'cat &gt;&gt; var/www/html/resources/config/ca-bundle.crt'	
+		
+		
+		
+		
+		</pre>
+	</li>
+	<li>
+		Install the Collabora Online App in Nextcloud.
+	</li>
+	<ol>
+		<li>
+			Login to Nextcloud as user <i>Administrator</i>.
+		</li>
+		<li>
+			Goto <i>Apps</i> → <i>Office &amp; Text</i> → <i>[Enable] Collabora Online</i>
+		</li>
+		<li>
+			Goto <i>Admin</i> → <i>Collabora Online for Collabora specific settings</i>
+		</li>
+	</ol>
+</ul>
+<h2>
+	3.3. ownCloud
+</h2>
+<p>
+	The Collabora Online app in ownCloud is already pre-installed in ownCloud, but deactivated by default. If you install Collabora after ownCloud, the app will be activated in ownCloud automatically.
+</p>
+<p>
+	You can check and activate the app manually following theses steps:
+</p>
+<ul>
+	<li>
+		If ownCloud is not installed yet, goto the App Center, select ownCloud and install it.
+	</li>
+	<li>
+		Login to ownCloud as admin user (username <i>owncloud</i>).
+	</li>
+	<li>
+		Goto <i>Settings</i> → <i>Admin Apps</i> → <i>Show disabled Apps</i> → <i>[Enable] Collabora Online</i>
+	</li>
+	<li>
+		Goto <i>Settings</i> → <i>Admin</i> → <i>Additional</i> → <i>Collabora Online</i>: Check the setting for Collabora Online server. By default it is set to the UCS host, where ownCloud is installed.
+	</li>
+</ul>
+<h1>
+	Community Support
+</h1>
+<p>
+	Depending on the file, sync and share application, please use the appropriate forums for seeking community help:
+</p>
+<ul>
+	<li>
+		<a href="https://help.egroupware.org/">EGroupware</a>
+	</li>
+	<li>
+		<a href="https://help.nextcloud.com/tag/collabora-online">Nextcloud</a>
+	</li>
+	<li>
+		<a href="https://central.owncloud.org/c/server">ownCloud</a>
+	</li>
+</ul>
