@@ -45,3 +45,119 @@ Description[de] = KI-Funktionen aktivieren. Benutzer können dann einen eigenen 
 Show = Install, Settings
 Group = AI
 Group[de] = KI
+
+[collabora/ai/apiurl]
+Type = String
+Description = Central AI provider base URL for all users (e.g. http://localhost:11434 for local Ollama, or https://api.openai.com). Must support the /v1/chat/completions endpoint. (Changing this setting restarts the app)
+Description[de] = Zentrale Basis-URL des KI-Anbieters für alle Benutzer (z.B. http://localhost:11434 für lokales Ollama oder https://api.openai.com). Muss den Endpunkt /v1/chat/completions unterstützen. (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = AI
+Group[de] = KI
+
+[collabora/ai/apikey]
+Type = String
+Description = API key for the central AI provider. May be left empty for self-hosted models without authentication. (Changing this setting restarts the app)
+Description[de] = API-Schlüssel für den zentralen KI-Anbieter. Kann für selbst gehostete Modelle ohne Authentifizierung leer bleiben. (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = AI
+Group[de] = KI
+
+[collabora/ai/model]
+Type = String
+Description = AI model name (e.g. gpt-4o, llama3.1, qwen2.5). Editing the document with AI requires a model with native tool calling. (Changing this setting restarts the app)
+Description[de] = Name des KI-Modells (z.B. gpt-4o, llama3.1, qwen2.5). Das Bearbeiten des Dokuments mit KI erfordert ein Modell mit nativer Werkzeugaufruf-Unterstützung (tool calling). (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = AI
+Group[de] = KI
+
+[collabora/accessibility]
+Type = Bool
+InitialValue = false
+Description = Enable screen reader support (accessibility) for all users. (Changing this setting restarts the app)
+Description[de] = Unterstützung für Screenreader (Barrierefreiheit) für alle Benutzer aktivieren. (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = Accessibility
+Group[de] = Barrierefreiheit
+
+[collabora/macros]
+Type = Bool
+InitialValue = false
+Description = Allow execution of Basic and Python macros in documents. Only enable this if you trust the users and their documents. (Changing this setting restarts the app)
+Description[de] = Ausführung von Basic- und Python-Makros in Dokumenten erlauben. Aktivieren Sie dies nur, wenn Sie den Benutzern und ihren Dokumenten vertrauen. (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = Security
+Group[de] = Sicherheit
+
+[collabora/languagetool/enabled]
+Type = Bool
+InitialValue = false
+Description = Enable grammar checking with a LanguageTool or Duden Korrekturserver API; configure the URL below. (Changing this setting restarts the app)
+Description[de] = Grammatikprüfung über eine LanguageTool- oder Duden-Korrekturserver-API aktivieren; konfigurieren Sie die URL unten. (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = LanguageTool
+Group[de] = LanguageTool
+
+[collabora/languagetool/baseurl]
+Type = String
+Description = LanguageTool API base URL, without the /check or /languages suffix (e.g. https://api.languagetoolplus.com/v2). (Changing this setting restarts the app)
+Description[de] = Basis-URL der LanguageTool-API, ohne den Zusatz /check oder /languages (z.B. https://api.languagetoolplus.com/v2). (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = LanguageTool
+Group[de] = LanguageTool
+
+[collabora/languagetool/username]
+Type = String
+Description = LanguageTool or Duden account user name (premium accounts only). (Changing this setting restarts the app)
+Description[de] = Benutzername des LanguageTool- oder Duden-Kontos (nur für Premium-Konten). (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = LanguageTool
+Group[de] = LanguageTool
+
+[collabora/languagetool/apikey]
+Type = String
+Description = LanguageTool or Duden API key (premium accounts only). (Changing this setting restarts the app)
+Description[de] = API-Schlüssel des LanguageTool- oder Duden-Kontos (nur für Premium-Konten). (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = LanguageTool
+Group[de] = LanguageTool
+
+[collabora/languagetool/restprotocol]
+Type = String
+Description = REST protocol variant: leave empty for LanguageTool, enter 'duden' for a Duden Korrekturserver. (Changing this setting restarts the app)
+Description[de] = REST-Protokollvariante: für LanguageTool leer lassen, für einen Duden-Korrekturserver 'duden' eintragen. (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = LanguageTool
+Group[de] = LanguageTool
+
+[collabora/deepl/enabled]
+Type = Bool
+InitialValue = false
+Description = Enable translation with the DeepL API; configure URL and key below. (Changing this setting restarts the app)
+Description[de] = Übersetzung über die DeepL-API aktivieren; konfigurieren Sie URL und Schlüssel unten. (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = DeepL
+Group[de] = DeepL
+
+[collabora/deepl/apiurl]
+Type = String
+Description = DeepL API URL (e.g. https://api-free.deepl.com/v2/translate). (Changing this setting restarts the app)
+Description[de] = URL der DeepL-API (z.B. https://api-free.deepl.com/v2/translate). (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = DeepL
+Group[de] = DeepL
+
+[collabora/deepl/authkey]
+Type = String
+Description = Authentication key from your DeepL account. (Changing this setting restarts the app)
+Description[de] = Authentifizierungsschlüssel Ihres DeepL-Kontos. (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = DeepL
+Group[de] = DeepL
+
+[collabora/fonts]
+Type = String
+Description = URL of a JSON file that lists additional fonts to install (remote font configuration). (Changing this setting restarts the app)
+Description[de] = URL einer JSON-Datei mit zusätzlich zu installierenden Schriftarten (Remote-Schriftartenkonfiguration). (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = Fonts
+Group[de] = Schriftarten
