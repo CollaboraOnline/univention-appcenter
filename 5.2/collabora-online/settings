@@ -1,6 +1,6 @@
 [domain]
 Description[de] = Diese Rechner dürfen auf den Collabora Online Server zugreifen (host\\.my\\.domain)
-Description[en] = These hosts have access to the Collabora Online server (host\\.my\\.domain)
+Description = These hosts have access to the Collabora Online server (host\\.my\\.domain)
 Type = String
 InitialValue = .*
 Required = True
@@ -10,7 +10,7 @@ Scope = inside, outside
 
 [username]
 Description[de] = Benutzername für den Zugriff auf Collabora Online Admin Console (Beim Ändern dieser Einstellung wird die App neu gestartet)
-Description[en] = User name for accessing Collabora Online Admin Console (Changing this setting restarts the app)
+Description = User name for accessing Collabora Online Admin Console (Changing this setting restarts the app)
 Type = String
 InitialValue = admin
 Required = True
@@ -21,7 +21,7 @@ Scope = inside, outside
 
 [password]
 Description[de]=Passwort für den Zugriff auf Collabora Online Admin Console (Beim Ändern dieser Einstellung wird die App neu gestartet)
-Description[en]=Password for accessing Collabora Online Admin Console (Changing this setting restarts the app)
+Description=Password for accessing Collabora Online Admin Console (Changing this setting restarts the app)
 Type = Password
 InitialValue = univention
 Required = True
