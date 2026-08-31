@@ -13,3 +13,12 @@ Type = Password
 InitialValue = univention
 Required = True
 Show = Install, Settings
+
+[collabora/ai]
+Type = Bool
+InitialValue = false
+Description = Enable AI features. Users can then configure their own OpenAI-compatible endpoint in the settings dialog. (Changing this setting restarts the app)
+Description[de] = KI-Funktionen aktivieren. Benutzer können dann einen eigenen OpenAI-kompatiblen Endpunkt im Einstellungsdialog konfigurieren. (Beim Ändern dieser Einstellung wird die App neu gestartet)
+Show = Install, Settings
+Group = AI
+Group[de] = KI

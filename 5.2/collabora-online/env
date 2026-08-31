@@ -8,8 +8,10 @@
 # aliasgroup1 is a regex matched against the connecting WOPI host.
 aliasgroup1=@%@domain@%@
 
-# The support key is set through a config override; there is no dedicated
-# environment variable for it. configure_host syncs the content of the
-# uploaded key file (/etc/collabora.key) into the UCR variable referenced
-# here. An empty value is the same as no key.
-extra_params=--o:support_key=@%@collabora/online/supportkey@%@
+# Config overrides without a dedicated environment variable go into
+# extra_params; docker only honours the last occurrence of a variable in an
+# env file, so all overrides must stay on this one line. The support key is
+# synced by configure_host from the uploaded key file (/etc/collabora.key)
+# into the UCR variable referenced here; an empty value is the same as no
+# key. collabora/ai is the AI master switch app setting.
+extra_params=--o:support_key=@%@collabora/online/supportkey@%@ --o:ai.enabled=@%@collabora/ai@%@

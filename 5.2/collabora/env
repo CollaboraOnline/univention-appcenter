@@ -1,0 +1,5 @@
+# Environment file for docker container creation. The @%@...@%@ references
+# are resolved from the app settings when the container is created; coolwsd
+# (started with --use-env-vars) reads the resulting variables at startup.
+
+extra_params=--o:ai.enabled=@%@collabora/ai@%@
