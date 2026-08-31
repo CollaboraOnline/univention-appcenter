@@ -13,8 +13,8 @@
 	</li>
 </ul>
 <p>
-	For a login as admin user, please user the username &quot;Administrator&quot; and the password given during the setup.
+	For a login as admin user, please use the username &quot;Administrator&quot; and the password given during the setup.
 </p>
 <p>
-	To use Nextcloud, users have to be enable for it first. Login to the UCS management system, select or create a respective user and enable the Nextcloud checkbox.
+	To use Nextcloud, users have to be enabled for it first. Login to the UCS management system, select or create a respective user and enable the Nextcloud checkbox.
 </p>

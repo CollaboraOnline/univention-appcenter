@@ -11,7 +11,7 @@ DockerScriptSetup =
 Logo = logo.svg
 DockerScriptStoreData = 
 LongDescription = <p>
-	Collabora Online is a powerful LibreOffice-based online office that supports all major document, spreadsheet and presentation file formats, which you can integrate in your own infrastructure. Key features are collaborative editing and excellent office file format support.
+	Collabora Online is a powerful collaborative online office suite that supports all major document, spreadsheet and presentation file formats, which you can integrate in your own infrastructure. Key features are collaborative editing and excellent office file format support.
 	</p>
 	<p>
 	Collabora Online is excellent for enterprises that need a powerful office suite on-premise, that protects their privacy and allows them to keep full control of their sensitive corporate data.
@@ -24,7 +24,7 @@ LongDescription = <p>
 	This app contains the Collabora Online Development Edition (CODE). See&nbsp;<a href="https://www.collaboraonline.com/case-studies/differences-between-code-and-collabora-online/">&quot;Understanding the differences between CODE and Collabora Online&quot;</a>&nbsp;for more details in the differences. The app integrates with ownCloud, Nextcloud and EGroupware and requires one of these apps in your UCS environment.
 	</p>
 	<p>
-	Collabora Online Development Edition (CODE) is aimed at home users, containing the latest and greatest developments, and supports up to 10 concurrent open documents from 20 different connections at the same time.
+	Collabora Online Development Edition (CODE) contains the latest and greatest developments and is aimed at home users and small teams.
 	</p>
 	<h3>
 	Key Features
@@ -78,7 +78,7 @@ WebInterfaceProxyScheme = both
 DockerEnvDatabaseName = DB_NAME
 DockerScriptUpdateRelease = 
 Website = https://www.collaboraonline.com/code/
-Description = Powerful LibreOffice-based online office suite
+Description = Powerful collaborative online office suite
 SupportUrl = https://www.collaboraonline.com/subscriptions/
 ApplianceFieldsBlacklist = basesystem
 ApplianceFavoriteModules = udm:users/user, udm:groups/group
@@ -110,9 +110,9 @@ TestSetupCPU = 2
 SupportType = app-provider
 
 [de]
-Description = Leistungsstarke LibreOffice-basierte Online-Office-Suite
+Description = Leistungsstarke kollaborative Online-Office-Suite
 LongDescription = <p>
-	Collabora Online ist ein leistungsstarke LibreOffice basierte Online-Office Lösung, die alle wichtigen Dokumenten-, Tabellenkalkulations- und Präsentationsdateiformate unterstützt, die Sie in Ihre eigene Infrastruktur integrieren können. Hauptmerkmale sind die kollaborative Bearbeitung und die hervorragende Unterstützung des Office-Dateiformats.
+	Collabora Online ist eine leistungsstarke kollaborative Online-Office Lösung, die alle wichtigen Dokumenten-, Tabellenkalkulations- und Präsentationsdateiformate unterstützt, die Sie in Ihre eigene Infrastruktur integrieren können. Hauptmerkmale sind die kollaborative Bearbeitung und die hervorragende Unterstützung des Office-Dateiformats.
 	</p>
 	<p>
 	Collabora Online ist hervorragend für Unternehmen geeignet, die eine leistungsstarke Office-Suite vor Ort benötigen, die ihre Privatsphäre schützt und ihnen die volle Kontrolle über ihre sensiblen Unternehmensdaten ermöglicht.
@@ -124,7 +124,7 @@ LongDescription = <p>
 	Diese App enthält die Collabora Online Development Edition (CODE). Siehe&nbsp;<a href="https://www.collaboraonline.com/case-studies/differences-between-code-and-collabora-online/">&quot;Understanding the differences between CODE and Collabora Online&quot;</a>&nbsp;für weitere Details in den Unterschieden. Die App integriert sich mit ownCloud, Nextcloud und EGroupware und benötigt eine dieser Apps in der UCS-Umgebung.
 	</p>
 	<p>
-	Collabora Online Development Edition (CODE) richtet sich an Heimanwender und enthält die neuesten und größten Entwicklungen. Es  unterstützt bis zu 10 gleichzeitige offene Dokumente aus 20 verschiedenen Verbindungen zur gleichen Zeit.
+	Collabora Online Development Edition (CODE) enthält die neuesten Entwicklungen und richtet sich an Heimanwender und kleine Teams.
 	</p>
 	<h3>
 	Hauptmerkmale

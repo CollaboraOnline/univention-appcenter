@@ -4,10 +4,10 @@ Code = 13
 Version = 26.04.3.3
 Name = Collabora Online
 Vendor = Collabora Productivity Ltd
-Description = Powerful LibreOffice-based online office suite
+Description = Powerful collaborative online office suite
 ApplianceCreate = True
 LongDescription = <p>
-	Collabora Online is a powerful LibreOffice-based online office that supports all major document, spreadsheet and presentation file formats, which you can integrate in your own infrastructure. Key features are collaborative editing and excellent office file format support.
+	Collabora Online is a powerful collaborative online office suite that supports all major document, spreadsheet and presentation file formats, which you can integrate in your own infrastructure. Key features are collaborative editing and excellent office file format support.
 	</p>
 	<p>
 	Collabora Online is excellent for enterprises that need a powerful office suite on-premise, that protects their privacy and allows them to keep full control of their sensitive corporate data.
@@ -108,9 +108,9 @@ TestSetupCPU = 2
 SupportType = app-provider
 
 [de]
-Description = Leistungsstarke LibreOffice-basierte Online-Office-Suite
+Description = Leistungsstarke kollaborative Online-Office-Suite
 LongDescription = <p>
-	Collabora Online ist ein leistungsstarke LibreOffice basierte Online-Office Lösung, die alle wichtigen Dokumenten-, Tabellenkalkulations- und Präsentationsdateiformate unterstützt, die Sie in Ihre eigene Infrastruktur integrieren können. Hauptmerkmale sind die kollaborative Bearbeitung und die hervorragende Unterstützung des Office-Dateiformats.
+	Collabora Online ist eine leistungsstarke kollaborative Online-Office Lösung, die alle wichtigen Dokumenten-, Tabellenkalkulations- und Präsentationsdateiformate unterstützt, die Sie in Ihre eigene Infrastruktur integrieren können. Hauptmerkmale sind die kollaborative Bearbeitung und die hervorragende Unterstützung des Office-Dateiformats.
 	</p>
 	<p>
 	Collabora Online ist hervorragend für Unternehmen geeignet, die eine leistungsstarke Office-Suite vor Ort benötigen, die ihre Privatsphäre schützt und ihnen die volle Kontrolle über ihre sensiblen Unternehmensdaten ermöglicht.

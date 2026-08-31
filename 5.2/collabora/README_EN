@@ -22,32 +22,18 @@
 		Make sure your browser can resolve the FQDN of the File Sync and Collabora Online server.
 	</li>
 	<li>
-		Make sure that the browser can validate the certificate of the Collabora server. UCS creates his own certificate authority and it is used by the apps. The <a href="https://help.univention.com/search?q=accept%20self%20signed%20certificate%20category%3A49">Univention Knowlege Base may help on this</a>.
+		Make sure that the browser can validate the certificate of the Collabora server. UCS creates its own certificate authority and it is used by the apps. The <a href="https://help.univention.com/search?q=accept%20self%20signed%20certificate%20category%3A49">Univention Knowledge Base may help on this</a>.
 	</li>
 	<li>
 		The administrator console can be found here:&nbsp;<a href="/browser/dist/admin/admin.html">/browser/dist/admin/admin.html</a>&nbsp;(HTTPS only).
 	</li>
 </ul>
 <h2>
-	2. Support Key
+	2. Support and Limitations
 </h2>
 <p>
-	Collabora Online requires a support key for production use. After you have purchased one, you receive a support key. To upload and activate it, follow these steps:
+	Collabora Online Development Edition (CODE) contains the latest developments and is aimed at home users and small teams. Only community support is available. If you are looking for a scalable, commercially supported version with long-term support, signed security updates and an SLA, have a look at the <a href="https://www.univention.com/products/univention-app-center/app-catalog/collabora-online/">Collabora Online</a> app.
 </p>
-<ul>
-	<li>
-		Go to the App Settings below.
-	</li>
-	<li>
-		Upload the key file via the respective upload dialog.
-	</li>
-	<li>
-		Stop the application at the top of the app settings.
-	</li>
-	<li>
-		Start the application again at the top of the app settings.
-	</li>
-</ul>
 <h2>
 	3. Integrations
 </h2>

@@ -21,7 +21,7 @@
 		Make sure your browser can resolve the FQDN of the File Sync and Collabora Online server.
 	</li>
 	<li>
-		Accept the certificate of the Collabora server in your browser if the browser requests accordingly. UCS creates his own certificate authority.
+		Accept the certificate of the Collabora server in your browser if the browser requests accordingly. UCS creates its own certificate authority.
 	</li>
 	<li>
 		The administrator console can be found here:&nbsp;<a href="/browser/dist/admin/admin.html">/browser/dist/admin/admin.html</a>&nbsp;(HTTPS only).
@@ -31,20 +31,17 @@
 	2. Support Key
 </h1>
 <p>
-	Collabora Online requires a support key for production use. After you have purchased one, you receive a support key. To upload and activate it, follow these steps:
+	Collabora Online requires a support key for production use. After you have purchased one, you receive a support key file. To upload and activate it, follow these steps:
 </p>
 <ul>
 	<li>
 		Go to the App Settings below.
 	</li>
 	<li>
-		Upload the key file via the respective upload dialog.
+		Upload the key file via the respective upload dialog and save the settings.
 	</li>
 	<li>
-		Stop the application at the top of the app settings.
-	</li>
-	<li>
-		Start the application again at the top of the app settings.
+		The application is restarted automatically.
 	</li>
 </ul>
 <h1>

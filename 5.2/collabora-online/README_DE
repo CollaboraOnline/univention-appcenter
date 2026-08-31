@@ -3,7 +3,7 @@
 </h1>
 <ul>
 	<li>
-		Zuerst benötigen Sie eine laufende Datei Sync und Share Lösung wie ownCloud oder Nextcloud (beide sind im UCS App Center verfügbar).
+		Zuerst benötigen Sie eine laufende Datei Sync und Share Lösung wie EGroupware, Nextcloud oder ownCloud (alle sind im Univention App Center verfügbar).
 	</li>
 	<li>
 		Als nächstes müssen Sie das Collabora Plugin in Ihrer File Sync and Share Lösung installieren (siehe unten für weitere Informationen)
@@ -29,11 +29,22 @@
 	</li>
 </ul>
 <h1>
-	2. Support and Limitations
+	2. Support Key
 </h1>
 <p>
-	Collabora Online Development Edition (oder CODE) ist eine Entwicklungsedition von Collabora Online. CODE ist ideal für Privatanwender, die ihre eigene Office Suite online betreiben möchten. Es unterstützt bis zu 10 offene Dokumente und 20 gleichzeitige Benutzer. Es steht nur Community-Support zur Verfügung. Wenn Sie auf der Suche nach einer skalierbaren, kommerziell unterstützten Version mit Langzeit-Support, signierten Sicherheitsupdates und einem SLA sind, sollten Sie sich unsere Seite <a href="https://www.univention.com/products/univention-app-center/app-catalog/collabora-online/">Collabora Online</a> ansehen.
+	Collabora Online benötigt für den Produktivbetrieb einen Support Key. Nach dem Kauf erhalten Sie eine Support-Key-Datei. So laden Sie sie hoch und aktivieren sie:
 </p>
+<ul>
+	<li>
+		Gehen Sie zu den App-Einstellungen unten.
+	</li>
+	<li>
+		Laden Sie die Key-Datei über den entsprechenden Upload-Dialog hoch und speichern Sie die Einstellungen.
+	</li>
+	<li>
+		Die App wird automatisch neu gestartet.
+	</li>
+</ul>
 <h1>
 	3. Integrationen
 </h1>
