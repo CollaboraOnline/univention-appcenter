@@ -11,10 +11,13 @@ DockerScriptSetup =
 Logo = logo.svg
 DockerScriptStoreData = 
 LongDescription = <p>
-	Collabora Online is a powerful collaborative online office suite that supports all major document, spreadsheet and presentation file formats, which you can integrate in your own infrastructure. Key features are collaborative editing and excellent office file format support.
+	Collabora Online is a powerful collaborative office suite that supports all major document, spreadsheet and presentation file formats, which you can integrate into your own infrastructure.
 	</p>
 	<p>
-	Collabora Online is excellent for enterprises that need a powerful office suite on-premise, that protects their privacy and allows them to keep full control of their sensitive corporate data.
+	Collabora Online provides data security and sovereignty, and is ideally suited to the demands of a modern distributed working environment.
+	</p>
+	<p>
+	Delivering a familiar look and feel, Collabora Online represents a real alternative to other big-brands solutions, giving you control and flexibility.
 	</p>
 	<p>
 	This app installs Collabora Online into your local UCS environment. It enables your users to edit office documents with their browser.
@@ -78,7 +81,7 @@ WebInterfaceProxyScheme = both
 DockerEnvDatabaseName = DB_NAME
 DockerScriptUpdateRelease = 
 Website = https://www.collaboraonline.com/code/
-Description = Powerful collaborative online office suite
+Description = Powerful collaborative office suite
 SupportUrl = https://www.collaboraonline.com/subscriptions/
 ApplianceFieldsBlacklist = basesystem
 ApplianceFavoriteModules = udm:users/user, udm:groups/group
@@ -110,12 +113,15 @@ TestSetupCPU = 2
 SupportType = app-provider
 
 [de]
-Description = Leistungsstarke kollaborative Online-Office-Suite
+Description = Leistungsstarke Office-Suite für die Zusammenarbeit
 LongDescription = <p>
-	Collabora Online ist eine leistungsstarke kollaborative Online-Office Lösung, die alle wichtigen Dokumenten-, Tabellenkalkulations- und Präsentationsdateiformate unterstützt, die Sie in Ihre eigene Infrastruktur integrieren können. Hauptmerkmale sind die kollaborative Bearbeitung und die hervorragende Unterstützung des Office-Dateiformats.
+	Collabora Online ist eine leistungsstarke Office-Suite für die Zusammenarbeit, die alle wichtigen Dateiformate für Dokumente, Tabellenkalkulationen und Präsentationen unterstützt, die Sie in Ihre eigene Infrastruktur integrieren können.
 	</p>
 	<p>
-	Collabora Online ist hervorragend für Unternehmen geeignet, die eine leistungsstarke Office-Suite vor Ort benötigen, die ihre Privatsphäre schützt und ihnen die volle Kontrolle über ihre sensiblen Unternehmensdaten ermöglicht.
+	Collabora Online bietet Datensicherheit und -hoheit und ist ideal für die Anforderungen einer modernen verteilten Arbeitsumgebung geeignet.
+	</p>
+	<p>
+	Mit seinem vertrauten Erscheinungsbild ist Collabora Online eine echte Alternative zu den Lösungen der großen Marken und bietet Ihnen Kontrolle und Flexibilität.
 	</p>
 	<p>
 	Diese App installiert Collabora Online in Ihre lokale UCS Umgebung. Sie ermöglicht es Ihren Nutzern, Office Dokumente mit ihrem Browser zu bearbeiten.
