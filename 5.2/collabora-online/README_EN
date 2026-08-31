@@ -3,7 +3,7 @@
 </h1>
 <ul>
 	<li>
-		First, you need a running File Sync and Share solution like EGroupware, Nextcloud or ownCloud (all are available in Univention App Center).
+		First, you need a running File Sync and Share solution like EGroupware or Nextcloud (both are available in Univention App Center).
 	</li>
 	<li>
 		Next, you need to install the Collabora Plugin in your File Sync and Share solution (see below for more information).
@@ -104,29 +104,6 @@ bash -c 'cat &gt;&gt; var/www/html/resources/config/ca-bundle.crt'
 		</li>
 	</ol>
 </ul>
-<h2>
-	3.3. ownCloud
-</h2>
-<p>
-	The Collabora Online app in ownCloud is already pre-installed in ownCloud, but deactivated by default. If you install Collabora after ownCloud, the app will be activated in ownCloud automatically.
-</p>
-<p>
-	You can check and activate the app manually following theses steps:
-</p>
-<ul>
-	<li>
-		If ownCloud is not installed yet, goto the App Center, select ownCloud and install it.
-	</li>
-	<li>
-		Login to ownCloud as admin user (username <i>owncloud</i>).
-	</li>
-	<li>
-		Goto <i>Settings</i> → <i>Admin Apps</i> → <i>Show disabled Apps</i> → <i>[Enable] Collabora Online</i>
-	</li>
-	<li>
-		Goto <i>Settings</i> → <i>Admin</i> → <i>Additional</i> → <i>Collabora Online</i>: Check the setting for Collabora Online server. By default it is set to the UCS host, where ownCloud is installed.
-	</li>
-</ul>
 <h1>
 	Community Support
 </h1>
@@ -139,8 +116,5 @@ bash -c 'cat &gt;&gt; var/www/html/resources/config/ca-bundle.crt'
 	</li>
 	<li>
 		<a href="https://help.nextcloud.com/tag/collabora-online">Nextcloud</a>
-	</li>
-	<li>
-		<a href="https://central.owncloud.org/c/server">ownCloud</a>
 	</li>
 </ul>
