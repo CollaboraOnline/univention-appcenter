@@ -33,6 +33,37 @@ app id, mirroring the arguments that the upload tool takes, e.g.
         inst
         ...
 
+## Pulling in remote changes before a new release
+
+Files can also be edited directly in the Provider Portal, so this
+repository and the portal can drift apart. Before starting a new app
+version, sync the currently published state into the repository and
+review the diff.
+
+The published files are served publicly. The component id of the latest
+published version is the `<appid>_<timestamp>` prefix of the newest ini
+in the meta-inf directory:
+
+    app=collabora
+    base=https://appcenter.software-univention.de
+    comp=$(curl -s "$base/meta-inf/5.2/$app/" | grep -o "href=\"${app}_[0-9]*\.ini\"" | tail -1 | sed 's/href="//;s/\.ini"//')
+    curl -sf "$base/meta-inf/5.2/$app/$comp.ini" -o "5.2/$app/ini"
+    for f in settings env configure_host inst preinst uinst test \
+             README_EN README_DE README_APPLIANCE_EN README_APPLIANCE_DE \
+             univention-config-registry-variables; do
+        curl -sf "$base/univention-repository/5.2/maintained/component/$comp/$f" -o /tmp/appfile \
+            && mv /tmp/appfile "5.2/$app/$f"
+    done
+
+and the same with `app=collabora-online`. A file the portal does not have
+(a 404) leaves the local copy untouched. If `git diff` shows changes,
+commit them as an import of the portal state before making new changes on
+top - that keeps portal edits and repository edits apart in the history.
+
+This only covers released versions. `./univention-appcenter-control
+status collabora` lists all versions the portal knows about; changes in
+an unreleased version are only visible in the Provider Portal itself.
+
 ## Uploading to the Test App Center
 
 Download the `univention-appcenter-control` tool (it needs Python 3.7+
