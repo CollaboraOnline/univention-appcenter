@@ -13,6 +13,12 @@
 # $1 is the action: install, upgrade, settings or remove. Install and
 # upgrade already (re)create the container with the current settings.
 
+# The restart notice at the top of the settings page is a read-only Status
+# setting: its localized Description is the visible text, and the stored
+# value is an invisible placeholder that only makes the form render the
+# widget - it must exist, so keep the UCR variable populated.
+ucr set collabora/settings/note='&nbsp;'
+
 if [ "$1" = "settings" ]; then
     univention-app reinitialize collabora
 fi
