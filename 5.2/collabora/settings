@@ -36,6 +36,7 @@ Type = String
 Description = Central AI provider base URL for all users (e.g. http://localhost:11434 for local Ollama, or https://api.openai.com). Must support the /v1/chat/completions endpoint.
 Description[de] = Zentrale Basis-URL des KI-Anbieters für alle Benutzer (z.B. http://localhost:11434 für lokales Ollama oder https://api.openai.com). Muss den Endpunkt /v1/chat/completions unterstützen.
 Show = Install, Settings
+Scope = inside, outside
 Group = AI
 Group[de] = KI
 

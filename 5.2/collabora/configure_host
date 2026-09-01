@@ -19,6 +19,22 @@
 # widget - it must exist, so keep the UCR variable populated.
 ucr set collabora/settings/note='&nbsp;'
 
+# coolwsd only allows outgoing connections to well-known AI provider
+# hosts and to private/loopback addresses; any other AI endpoint must be
+# in the net.lok_allow allowlist, which the env file feeds from this UCR
+# variable. Extract the host from the configured AI base URL and escape
+# the regex metacharacters (the allowlist entries are regexes).
+aiurl="$(ucr get collabora/ai/apiurl)"
+aihost="${aiurl#*://}"
+aihost="${aihost%%/*}"
+aihost="${aihost%%:*}"
+aihost="$(printf '%s' "$aihost" | sed 's/[][*^$()+?{}|\\.]/\\&/g')"
+if [ -n "$aihost" ]; then
+    ucr set collabora/ai/allowhost="$aihost"
+else
+    ucr unset collabora/ai/allowhost
+fi
+
 if [ "$1" = "settings" ]; then
     univention-app reinitialize collabora
 fi
