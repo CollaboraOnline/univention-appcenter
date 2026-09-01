@@ -35,19 +35,67 @@ app id, mirroring the arguments that the upload tool takes, e.g.
 
 ## Uploading to the Test App Center
 
-Download `univention-appcenter-control` from the
-[App Provider Portal](https://provider-portal.software-univention.de/)
-(requires Python 3.7+ and curl), then:
+Download the `univention-appcenter-control` tool (it needs Python 3.7+
+and curl):
 
-    ./univention-appcenter-control upload --username "$USER" \
-        5.2/collabora=<app version> ini settings configure_host inst ...
+    curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
+    chmod +x univention-appcenter-control
+
+The tool asks for a username and password: use the credentials of your
+account at https://provider-portal.software-univention.de/.
+
+Create the new app version as a copy of the latest published one, then
+upload the files:
+
+    ./univention-appcenter-control new-version 5.2/collabora=25.04.9.4 5.2/collabora=26.04.3.2
+    cd 5.2/collabora
+    ../../univention-appcenter-control upload 5.2/collabora=26.04.3.2 \
+        ini settings env configure_host inst preinst uinst test \
+        README_EN README_DE README_APPLIANCE_EN README_APPLIANCE_DE \
+        univention-config-registry-variables
 
 and likewise with `5.2/collabora-online=<app version>` for the Collabora
 Online app.
 
-Add `--pwdfile <file> --non-interactive` for unattended use. Uploads go to
-the Test App Center; the release to the production App Center is requested
-through the Provider Portal.
+For unattended use, store the password in a file (without a trailing
+newline) and pass the credentials on the command line:
+
+    printf '%s' 'PASSWORD' > ~/.appcenter-pwd
+    chmod 600 ~/.appcenter-pwd
+    ./univention-appcenter-control upload --username USERNAME \
+        --pwdfile ~/.appcenter-pwd --noninteractive \
+        5.2/collabora=26.04.3.2 ini settings
+
+Uploads go to the Test App Center; the release to the production App
+Center is requested through the Provider Portal. The upload tool can only
+add or replace files - to delete one (such as the dropped in-container
+configure script), clear the corresponding field in the Provider Portal.
+
+## Testing from the Test App Center
+
+On a UCS test machine, switch the App Center to the Test App Center and
+install the app:
+
+    univention-install univention-appcenter-dev
+    univention-app dev-use-test-appcenter
+    univention-app update
+    univention-app install collabora
+
+After uploading changed app files, refresh the local cache and exercise
+the change, e.g.:
+
+    univention-app update
+    univention-app configure collabora --set username=admin --set password=secret
+
+A settings change recreates the container; the result can be checked in
+the container environment:
+
+    docker inspect "$(ucr get appcenter/apps/collabora/container)" \
+        --format '{{range .Config.Env}}{{println .}}{{end}}'
+
+`univention-app shell` does not work with these apps (the distroless
+image has no shell). `univention-app dev-use-test-appcenter --revert`
+switches the machine back to the production App Center.
 
 ## Configuration notes
 
