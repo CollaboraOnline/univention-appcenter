@@ -141,8 +141,8 @@ Group[de] = DeepL
 
 [collabora/fonts]
 Type = String
-Description = URL of a JSON file that lists additional fonts to install (remote font configuration).
-Description[de] = URL einer JSON-Datei mit zusätzlich zu installierenden Schriftarten (Remote-Schriftartenkonfiguration).
+Description = URL of a JSON file that lists additional fonts to install, e.g. the font list of the Nextcloud on this host: https://FQDN_OF_THIS_SERVER/nextcloud/apps/richdocuments/settings/fonts.json
+Description[de] = URL einer JSON-Datei mit zusätzlich zu installierenden Schriftarten, z.B. die Schriftartenliste der Nextcloud auf diesem Rechner: https://FQDN_DIESES_SERVERs/nextcloud/apps/richdocuments/settings/fonts.json
 Show = Install, Settings
 Group = Fonts
 Group[de] = Schriftarten
