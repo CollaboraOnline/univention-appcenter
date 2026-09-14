@@ -2,4 +2,12 @@
 
 ucr set appcenter/apps/collabora-online/docker/params='--restart always -t'
 
+# The env file references these UCR variables, but they are only populated
+# later by configure_host (from the uploaded support key and the configured
+# AI endpoint). Pre-create them empty so the first container creation does
+# not warn that they do not exist. Leave an existing value untouched, so an
+# upgrade keeps the support key.
+[ -n "$(ucr get collabora/online/supportkey 2>/dev/null)" ] || ucr set collabora/online/supportkey=''
+[ -n "$(ucr get collabora/ai/allowhost 2>/dev/null)" ] || ucr set collabora/ai/allowhost=''
+
 exit 0
