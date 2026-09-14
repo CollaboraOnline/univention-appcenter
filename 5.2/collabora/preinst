@@ -2,4 +2,9 @@
 
 ucr set appcenter/apps/collabora/docker/params='--restart always --cap-add MKNOD -t'
 
+# The env file references this UCR variable, but it is only populated later
+# by configure_host (from the configured AI endpoint). Pre-create it empty
+# so the first container creation does not warn that it does not exist.
+[ -n "$(ucr get collabora/ai/allowhost 2>/dev/null)" ] || ucr set collabora/ai/allowhost=''
+
 exit 0

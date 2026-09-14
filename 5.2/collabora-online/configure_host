@@ -30,7 +30,7 @@ fi
 if [ -n "$key" ]; then
     ucr set collabora/online/supportkey="$key"
 else
-    ucr unset collabora/online/supportkey
+    ucr set collabora/online/supportkey=''
 fi
 
 # coolwsd only allows outgoing connections to well-known AI provider
@@ -38,7 +38,7 @@ fi
 # in the net.lok_allow allowlist, which the env file feeds from this UCR
 # variable. Extract the host from the configured AI base URL and escape
 # the regex metacharacters (the allowlist entries are regexes).
-aiurl="$(ucr get collabora/ai/apiurl)"
+aiurl="$(ucr get collabora/ai/apiurl 2>/dev/null)"
 aihost="${aiurl#*://}"
 aihost="${aihost%%/*}"
 aihost="${aihost%%:*}"
@@ -46,7 +46,7 @@ aihost="$(printf '%s' "$aihost" | sed 's/[][*^$()+?{}|\\.]/\\&/g')"
 if [ -n "$aihost" ]; then
     ucr set collabora/ai/allowhost="$aihost"
 else
-    ucr unset collabora/ai/allowhost
+    ucr set collabora/ai/allowhost=''
 fi
 
 if [ "$1" = "settings" ]; then
