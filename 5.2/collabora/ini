@@ -65,6 +65,7 @@ DockerImage = docker.software-univention.de/collabora:26.04.3.2
 License = freemium
 LogoDetailPage = logo_detail_page.svg
 PortsExclusive = 9980
+DockerVolumes = /etc/univention/ssl/ucsCA/CAcert.pem:/etc/coolwsd/ucsCA.pem:ro
 DockerServerRole = memberserver
 DockerEnvDatabasePort = DB_PORT
 DockerScriptUpdateAppVersion = 

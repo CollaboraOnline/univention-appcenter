@@ -64,6 +64,7 @@ DockerScriptStoreData =
 DockerImage = registry.gitlab.collabora.com/collabora-online/docker:26.04.3.3.1
 LogoDetailPage = logo_detail_page.svg
 PortsExclusive = 9980
+DockerVolumes = /etc/univention/ssl/ucsCA/CAcert.pem:/etc/coolwsd/ucsCA.pem:ro
 DockerServerRole = memberserver
 DockerEnvDatabasePort = DB_PORT
 DockerScriptUpdateAppVersion = 
