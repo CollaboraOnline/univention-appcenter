@@ -1,7 +1,7 @@
 [Application]
 ID = collabora
 Code = 0T
-Version = 26.04.3.2
+Version = 26.04.5.2
 Name = Collabora Online Development Edition
 Vendor = Collabora Productivity Limited
 DockerEnvDatabaseHost = DB_HOST
@@ -61,7 +61,7 @@ LongDescription = <p>
 	WOPI (Web Application Open Platform Interface) protocol for communication with your web application (authentication and file transfer)
 	</li>
 	</ul>
-DockerImage = docker.software-univention.de/collabora:26.04.3.2
+DockerImage = collabora/code:26.04.5.2.1
 License = freemium
 LogoDetailPage = logo_detail_page.svg
 PortsExclusive = 9980
